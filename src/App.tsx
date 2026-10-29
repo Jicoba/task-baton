@@ -138,7 +138,22 @@ export default function App() {
         })
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let data: any;
+
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const rawText = await response.text();
+        if (response.status === 404 || rawText.includes('The page could not be found')) {
+          throw new Error(
+            'API 서버(/api/handover/generate)를 찾을 수 없습니다(404). Vercel 배포 시 api/ 디렉터리와 vercel.json이 함께 배포되었는지, 그리고 Vercel Settings > Environment Variables에 GEMINI_API_KEY가 등록되어 있는지 확인해 주세요.'
+          );
+        }
+        throw new Error(
+          `서버 응답 오류 (HTTP ${response.status}): ${rawText.slice(0, 180)}`
+        );
+      }
 
       if (!response.ok || !data.success) {
         throw new Error(data.error || 'AI 인수인계 초안 생성 중 오류가 발생했습니다.');
