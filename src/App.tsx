@@ -147,7 +147,12 @@ export default function App() {
         const rawText = await response.text();
         if (response.status === 404 || rawText.includes('The page could not be found')) {
           throw new Error(
-            'API 서버(/api/handover/generate)를 찾을 수 없습니다(404). Vercel 배포 시 api/ 디렉터리와 vercel.json이 함께 배포되었는지, 그리고 Vercel Settings > Environment Variables에 GEMINI_API_KEY가 등록되어 있는지 확인해 주세요.'
+            'API 서버(/api/handover/generate)를 찾을 수 없습니다(404). vercel.json 설정과 api/ 디렉터리가 Git에 포함되어 배포되었는지 확인해 주세요.'
+          );
+        }
+        if (rawText.includes('A server error has occurred') || response.status === 500) {
+          throw new Error(
+            'Vercel 서버리스 함수 실행 오류(HTTP 500)가 발생했습니다. Vercel 프로젝트 대시보드의 [Settings] > [Environment Variables]에 GEMINI_API_KEY가 올바르게 등록되어 있는지 확인해 주시고, Vercel [Deployments]에서 최신 코드를 [Redeploy]해 주세요.'
           );
         }
         throw new Error(
