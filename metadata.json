@@ -1,0 +1,6 @@
+{
+  "name": "업무 바통",
+  "description": "AI 기반 인수인계 초안 작성 도구. 전임자의 업무 자료를 분석하여 출처 근거가 연결된 구조화된 인수인계 초안을 작성하고 검토·수정 및 내보내기를 지원합니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

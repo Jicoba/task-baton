@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .neu-frame {
+    background: #0d1238;
+    box-shadow: 
+      12px 12px 30px rgba(3, 5, 18, 0.9),
+      -8px -8px 24px rgba(30, 42, 110, 0.25),
+      inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(40, 55, 135, 0.35);
+  }
+
+  .neu-card {
+    background: #141b4e;
+    box-shadow: 
+      6px 6px 16px rgba(3, 5, 18, 0.75),
+      -4px -4px 12px rgba(35, 50, 130, 0.25);
+    border: 1px solid rgba(45, 65, 150, 0.35);
+  }
+
+  .neu-card-sm {
+    background: #17205a;
+    box-shadow: 
+      4px 4px 12px rgba(3, 5, 18, 0.65),
+      -3px -3px 8px rgba(35, 50, 130, 0.2);
+    border: 1px solid rgba(45, 65, 150, 0.3);
+  }
+
+  .neu-inset {
+    background: #0a0f2f;
+    box-shadow: 
+      inset 4px 4px 10px rgba(2, 3, 12, 0.8),
+      inset -3px -3px 8px rgba(30, 45, 120, 0.2);
+    border: 1px solid rgba(35, 50, 120, 0.3);
+  }
+
+  .neu-pill-active {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #a855f7 100%);
+    box-shadow: 
+      0 0 18px rgba(99, 102, 241, 0.5),
+      inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  }
+
+  .neu-pill-magenta {
+    background: linear-gradient(135deg, #ec4899 0%, #d946ef 50%, #a855f7 100%);
+    box-shadow: 0 0 18px rgba(217, 70, 239, 0.5);
+  }
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f30;
+}
+::-webkit-scrollbar-thumb {
+  background: #253380;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4da6;
+}
